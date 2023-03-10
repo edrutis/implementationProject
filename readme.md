@@ -12,9 +12,9 @@ I have developed much of the front end and back end at this point. I have primar
 - View Car
 - Delete Location
 
-#Tech Stack
+# Tech Stack
 
-Database: MongoDB on Atlas
-Backend: NestJS running locally on Node via Yarn
-Frontend: React running locally on Node via Yarn
-Extra packages: Tailwind for styling, Axios for API calls
+- Database: MongoDB on Atlas
+- Backend: NestJS running locally on Node via Yarn
+- Frontend: React running locally on Node via Yarn
+- Extra packages: Tailwind for styling, Axios for API calls
