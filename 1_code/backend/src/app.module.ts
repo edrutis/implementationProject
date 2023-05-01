@@ -19,13 +19,17 @@ import { VehicleController } from './controller/vehicle.controller';
 import { Location, LocationSchema } from './model/location.schema';
 import { LocationService } from './service/location.service';
 import { LocationController } from './controller/location.controller';
-
+import { Rental, RentalSchema } from './model/rental.schema';
+import { RentalService } from './service/rental.service';
+import { RentalController } from './controller/rental.controller';
 @Module({
   imports: [
     MongooseModule.forRoot('mongodb+srv://main:pass@cluster0.fw6wrvn.mongodb.net/?retryWrites=true&w=majority'),
     MongooseModule.forFeature([{ name: User.name, schema: UserSchema }]),
     MongooseModule.forFeature([{ name: Vehicle.name, schema: VehicleSchema}]),
     MongooseModule.forFeature([{ name: Location.name, schema: LocationSchema}]),
+    MongooseModule.forFeature([{ name: Rental.name, schema: RentalSchema}]),
+
     MulterModule.register({
       storage: diskStorage({
         destination: './public',
@@ -43,15 +47,14 @@ import { LocationController } from './controller/location.controller';
      rootPath: join(__dirname, '..', 'public'),
    }),
   ],
-  controllers: [AppController, UserController, VehicleController, LocationController],
-  providers: [AppService, UserService, VehicleService, LocationService],
+  controllers: [AppController, UserController, VehicleController, LocationController, RentalController],
+  providers: [AppService, UserService, VehicleService, LocationService, RentalService],
 })
 export class AppModule {
   configure(consumer: MiddlewareConsumer) {
     consumer
       .apply(isAuthenticated)
       .exclude(
-        { path: 'api/v1/video/:id', method: RequestMethod.GET }
       )
       
   }

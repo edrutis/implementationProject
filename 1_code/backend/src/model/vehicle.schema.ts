@@ -26,5 +26,7 @@ export class Vehicle {
     photo: string
     @Prop({required:true})
     currentHome: string
+    @Prop({required:true})
+    history: string[]
 }
 export const VehicleSchema = SchemaFactory.createForClass(Vehicle)

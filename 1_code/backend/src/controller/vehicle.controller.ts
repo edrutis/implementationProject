@@ -27,4 +27,14 @@ export class VehicleController {
         const foundVehicle = await this.vehicleService.findByLicense(vehicle);
         return response.status(HttpStatus.OK).json({foundVehicle,})
     }
+    @Post('/newHistory')
+    async newHistory(@Res() response, @Body() update: {license:string, newHistory:string[]}) {
+        const updated = await this.vehicleService.newHistory(update)
+        return response.status(HttpStatus.OK).json({updated,}) 
+    }
+    @Post('/pick')
+    async pick(@Res() response, @Body() update: {license:string, loc:string}) {
+        const updated = await this.vehicleService.pick(update)
+        return response.status(HttpStatus.ACCEPTED).json({updated})
+    }
 }

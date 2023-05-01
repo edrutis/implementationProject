@@ -23,6 +23,7 @@ export class VehicleService {
       seats: vehicle.seats,
       photo: vehicle.photo,
       currentHome: vehicle.currentHome,
+      history:[]
     };
     const newVehicle = new this.vehicleModel(reqBody);
     return newVehicle.save();
@@ -38,5 +39,13 @@ export class VehicleService {
 
   async findByLicense({ license }): Promise<Vehicle> {
     return await this.vehicleModel.findOne({ license: license }).exec();
+  }
+
+  async newHistory({ license, newHistory }) {
+    return await this.vehicleModel.updateOne({ license:license }, {$set:{ history: newHistory }}).exec();
+  }
+
+  async pick ({license, loc}) {
+    return await this.vehicleModel.updateOne({ license:license}, {$set:{currentHome:loc}}).exec()
   }
 }
