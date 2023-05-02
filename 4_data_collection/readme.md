@@ -1,0 +1,1 @@
+Data collection is not actively completed. All data is maintained in the MongoDb database instance and has the possibility of being analyzed later
